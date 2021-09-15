@@ -93,7 +93,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 @client.command(name='zagraj', help='bot gra muzyke ')
 async def zagraj(ctx, url):
     if not ctx.message.author.voice:
-        await ctx.send("You are not connected to a voice channel")
+        await ctx.send("No chyba nie, nie jesteś połączony do kanału")
         return
 
     else:
