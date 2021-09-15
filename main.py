@@ -87,8 +87,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)
 
 
-@client.command()
-async def dołącz(ctx):
+@client.command(aliases = ["wejdź", "dołącz"])
+async def dolacz(ctx):
     channel = ctx.author.voice.channel
     await channel.connect()
 
