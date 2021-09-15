@@ -87,7 +87,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)
 
 
-
+@client.command()
+async def dołącz(ctx):
+    channel = ctx.author.voice.channel
+    await channel.connect()
 
 
 @client.command(name='zagraj', help='bot gra muzyke ')
@@ -95,11 +98,6 @@ async def zagraj(ctx, url):
     if not ctx.message.author.voice:
         await ctx.send("No chyba nie, nie jesteś połączony do kanału")
         return
-
-    else:
-        channel = ctx.message.author.voice.channel
-
-    await channel.connect()
 
     server = ctx.message.guild
     voice_channel = server.voice_client
