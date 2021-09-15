@@ -20,11 +20,11 @@ async def on_ready():
 async def on_member_join(member):
     print(f'{member} dołączył do serwera')
 
-@client.command()
+@client.command(help='PONG!')
 async def ping(ctx):
     await ctx.send('Pong!')
 
-@client.command(aliases= ['purge','delete'])
+@client.command(aliases= ['purge','delete'], help='clearuje WSZYSTKO, chyba że wpiszesz po clear liczbę')
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, amount=None): # Set default value as None
     if amount == None:
@@ -86,7 +86,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)
 
 
-@client.command(aliases = ["wejdź", "dołącz"])
+@client.command(aliases = ["wejdź", "dołącz"], help='dodaje bota do kanału')
 async def dolacz(ctx):
     channel = ctx.author.voice.channel
     await channel.connect()
