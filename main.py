@@ -33,7 +33,7 @@ async def clear(ctx, amount=None): # Set default value as None
         try:
             int(amount)
         except: # Error handler
-            await ctx.send('Please enter a valid integer as amount.')
+            await ctx.send('aha')
         else:
             await ctx.channel.purge(limit=amount)
 
