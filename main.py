@@ -9,11 +9,15 @@ from random import choice
 import asyncio
 from discord.utils import get
 
-client = commands.Bot(command_prefix='Brek ', case_insensitive=True)
+client = commands.Bot(command_prefix='Brek ', case_insensitive=False )
 
 @client.command(help="ip servera", aliases= ["mc", "minecraft",],)
 async def ip(ctx):
 	await ctx.send("pajace_na.aternos.me")
+
+@client.command(help='ping - pong')
+async def ping(ctx):
+    await ctx.send(f'PONG! {round(client.latency * 1000)}ms')
 
 @client.event
 async def on_command_error(ctx, error,):
@@ -36,10 +40,6 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     print(f'{member} dołączył do serwera')
-
-@client.command(help='PONG!')
-async def ping(ctx):
-    await ctx.send('Pong!')
 
 @client.command(aliases= ['purge','delete'], help='clearuje 11 wiadomości, chyba że wpiszesz po clear liczbę (nie działa po clear liczb)')
 @commands.has_permissions(manage_messages=True)
