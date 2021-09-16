@@ -11,6 +11,23 @@ from discord.utils import get
 
 client = commands.Bot(command_prefix='Brek ', case_insensitive=True)
 
+@client.command(help="ip servera", aliases= ["mc", "minecraft",],)
+async def ip(ctx):
+	await ctx.send("pajace_na.aternos.me")
+
+@client.event
+async def on_command_error(ctx, error,):
+	if isinstance(error, commands.errors.CommandNotFound):
+			await ctx.send("Rub mie louda")
+
+@client.command(help='kabulon',)
+async def kabulon(ctx):
+	await ctx.send("gówno z cebulom")
+
+@client.command(help='pull-up', aliases= ["pulla", "pull-up", "pul-up",],)
+async def pula(ctx):
+	await ctx.send("pula, pula obciągasz mi siura")
+
 @client.event
 async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=discord.Game('Minecraft'))
@@ -114,6 +131,12 @@ async def stop(ctx):
     if voice.is_playing():
         voice.stop()
         await ctx.send('stopowanie...')
+
+@client.command(pass_context=True, aliases = ["wejdż", "wypierdalaj"])
+async def wyjdz(ctx):
+	server = ctx.message.guild.voice_client
+	await server.disconnect()
+	await ctx.send("no ok ):")
 
 token = os.environ.get("TOKEN")
 client.run(token)
