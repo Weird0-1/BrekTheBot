@@ -41,9 +41,9 @@ async def on_member_join(member):
 async def ping(ctx):
     await ctx.send('Pong!')
 
-@client.command(aliases= ['purge','delete'], help='clearuje WSZYSTKO, chyba że wpiszesz po clear liczbę')
+@client.command(aliases= ['purge','delete'], help='clearuje 11 wiadomości, chyba że wpiszesz po clear liczbę (nie działa po clear liczb)')
 @commands.has_permissions(manage_messages=True)
-async def clear(ctx, amount=None): # Set default value as None
+async def clear(ctx, amount=11): # Set default value as None
     if amount == None:
         await ctx.channel.purge(limit=1000000)
     else:
