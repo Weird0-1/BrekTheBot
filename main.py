@@ -8,6 +8,9 @@ import youtube_dl
 from random import choice
 import asyncio
 from discord.utils import get
+import requests
+from bs4 import BeautifulSoup
+import aternosapi 
 
 client = commands.Bot(command_prefix='Brek ', case_insensitive=False )
 
